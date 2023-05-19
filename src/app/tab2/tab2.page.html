@@ -1,17 +1,68 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Pay & Transfer </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!showRecipientDetailsForm">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Pay & Transfer</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-card class="zelle-card">
+    <ion-card-header style="text-align: center">
+      <ion-card-title color="primary">Send</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: center">
+      Send money with Zelle
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="zelle-card">
+    <ion-card-header style="text-align: center">
+      <ion-card-title color="primary">Request/Split</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="text-align: center">
+      Request / split money with Zelle
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Recipient List</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let recipient of recipientData">
+          <ion-icon
+            name="person-circle-outline"
+            slot="start"
+            size="large"
+            color="primary"
+          ></ion-icon>
+          <ion-label>
+            <h2>{{ recipient.fullname }}</h2>
+            <p style="font-weight: bold">{{recipient.tokenValue}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-fab
+        slot="fixed"
+        vertical="bottom"
+        horizontal="end"
+        (click)="navigateToRecipientDetailsForm()"
+      >
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="showRecipientDetailsForm">
+  <app-recipient-details-form
+    (cancel)="onCancelForm()"
+  ></app-recipient-details-form>
 </ion-content>

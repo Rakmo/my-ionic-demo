@@ -1,17 +1,92 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Account(s) </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" *ngIf="!showAccountDetails">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Account(s)</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-account-card
+    (click)="showAccountDetails = true"
+    balance="$4,231.00"
+    accountName="Checking *8132"
+  ></app-account-card>
+  <app-account-card
+    (click)="showAccountDetails = true"
+    balance="$45,234.00"
+    accountName="Savings *7984"
+  ></app-account-card>
 </ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="showAccountDetails">
+  <ion-header collapse="condense">
+    <ion-toolbar (click)="showAccountDetails = false">
+      <ion-icon
+        name="chevron-back-outline"
+        size="large"
+        style="margin-right: 30px"
+      ></ion-icon>
+      <ion-title size="large" style="margin-left: 30px"
+        >Account *8132</ion-title
+      >
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary">$4,231.00</ion-card-title>
+      <ion-card-subtitle>Available Balance</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card>
+      <ion-card-header (click)="toggleDetails()" class="header">
+        <div class="header-content">
+          <ion-icon
+            name="chevron-down-outline"
+            *ngIf="!detailsShown"
+          ></ion-icon>
+          <ion-icon name="chevron-up-outline" *ngIf="detailsShown"></ion-icon>
+          <ion-card-subtitle>Account Details</ion-card-subtitle>
+        </div>
+      </ion-card-header>
+      <div [@expandCollapse]="detailsShown ? 'expanded' : 'collapsed'">
+        <ion-card-content class="content">
+          <ion-item>
+            <ion-label class="label">Account Number:</ion-label>
+            <ion-label class="value" slot="end">1234568132</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label class="label">Routing Number:</ion-label>
+            <ion-label class="value" slot="end">987654321</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </div>
+    </ion-card>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let transaction of transactionData"
+          class="transaction-item"
+        >
+          <ion-label>
+            <div class="left-content">
+              <p class="date">{{ transaction.date }}</p>
+              <h2>{{ transaction.agent }}</h2>
+            </div>
+            <p class="amount">{{ transaction.amount }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-text color="Primary">
+    <p class="custom-heading">Member FDIC | Equal Housing Lender</p>
+  </ion-text>
+</ion-footer>

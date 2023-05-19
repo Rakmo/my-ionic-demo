@@ -1,0 +1,49 @@
+.custom-heading {
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+}
+
+.transaction-item {
+  ion-label {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left-content {
+    text-align: left;
+  }
+
+  .date {
+    color: gray;
+  }
+
+  .amount {
+    text-align: right;
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+  }
+}
+
+ion-card-content {
+  .label {
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .value {
+    text-align: right;
+  }
+}
+
+.header {
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+  ion-icon {
+    margin-right: 10px;
+  }
+}

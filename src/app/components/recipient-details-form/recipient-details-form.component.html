@@ -1,0 +1,54 @@
+<h2>Recipient Details</h2>
+
+<form>
+  <ion-item>
+    <ion-label position="floating" style="font-weight: bold"
+      >First Name</ion-label
+    >
+    <ion-input
+      [(ngModel)]="firstName"
+      name="firstName"
+      [ngModelOptions]="{ standalone: true }"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="font-weight: bold"
+      >Last Name</ion-label
+    >
+    <ion-input
+      [(ngModel)]="lastName"
+      name="lastName"
+      [ngModelOptions]="{ standalone: true }"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item style="font-weight: bold">
+    <ion-toggle
+      [(ngModel)]="isEmail"
+      (click)="toggleChanged()"
+      [ngModelOptions]="{ standalone: true }"
+      style="margin-top: 30px"
+    >
+      Is it email?
+    </ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating" style="font-weight: bold">
+      {{ isEmail ? "Email" : "Phone" }}
+    </ion-label>
+    <ion-input
+      [(ngModel)]="value"
+      name="value"
+      [ngModelOptions]="{ standalone: true }"
+    ></ion-input>
+  </ion-item>
+
+  <div class="ion-text-center ion-padding button-group bottom-button-group">
+    <ion-button expand="block" (click)="submit()">Submit</ion-button>
+    <ion-button expand="block" (click)="onCancel()" class="cancel-button"
+      >Cancel</ion-button
+    >
+  </div>
+</form>
