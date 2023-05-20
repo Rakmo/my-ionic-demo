@@ -32,6 +32,9 @@ import {
 })
 export class Tab1Page {
   showAccountDetails: boolean = false;
+  showLoader: boolean = false;
+  accountName?: string;
+  balance?: string;
   transactionData = [
     {
       id: 1,
@@ -83,5 +86,17 @@ export class Tab1Page {
 
   toggleDetails() {
     this.detailsShown = !this.detailsShown;
+  }
+
+  openAccountDetails(accountName: string, balance: string) {
+    this.showLoader = true;
+    this.accountName = accountName;
+    this.balance = balance;
+    console.log(this.showLoader);
+    setTimeout(() => {
+      this.showLoader = false;
+      this.showAccountDetails = true;
+      console.log(this.showLoader);
+    }, 2000);
   }
 }

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AccountCardComponent implements OnInit {
   @Input() balance: string = '';
   @Input() accountName: string = '';
+  @Input() id: string = '';
   constructor() {}
 
   ngOnInit() {}

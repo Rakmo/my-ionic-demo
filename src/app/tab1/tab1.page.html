@@ -12,15 +12,33 @@
   </ion-header>
 
   <app-account-card
-    (click)="showAccountDetails = true"
+    (click)="openAccountDetails('Checking *8132', '$4,231.00')"
     balance="$4,231.00"
     accountName="Checking *8132"
+    id="open-loading"
   ></app-account-card>
   <app-account-card
-    (click)="showAccountDetails = true"
+    (click)="openAccountDetails('Savings *7984', '$45,234.00')"
     balance="$45,234.00"
     accountName="Savings *7984"
+    id="open-loading-2"
   ></app-account-card>
+
+  <ion-loading
+    class="custom-loading"
+    trigger="open-loading"
+    message="Loading..."
+    [duration]="2000"
+    spinner="crescent"
+  ></ion-loading>
+
+  <ion-loading
+    class="custom-loading"
+    trigger="open-loading-2"
+    message="Loading..."
+    [duration]="2000"
+    spinner="crescent"
+  ></ion-loading>
 </ion-content>
 
 <ion-content [fullscreen]="true" *ngIf="showAccountDetails">
@@ -32,13 +50,13 @@
         style="margin-right: 30px"
       ></ion-icon>
       <ion-title size="large" style="margin-left: 30px"
-        >Account *8132</ion-title
+        >{{accountName}}</ion-title
       >
     </ion-toolbar>
   </ion-header>
   <ion-card>
     <ion-card-header>
-      <ion-card-title color="primary">$4,231.00</ion-card-title>
+      <ion-card-title color="primary">{{balance}}</ion-card-title>
       <ion-card-subtitle>Available Balance</ion-card-subtitle>
     </ion-card-header>
     <ion-card>
@@ -56,7 +74,9 @@
         <ion-card-content class="content">
           <ion-item>
             <ion-label class="label">Account Number:</ion-label>
-            <ion-label class="value" slot="end">1234568132</ion-label>
+            <ion-label class="value" slot="end"
+              >123456{{accountName?.slice(-4)}}</ion-label
+            >
           </ion-item>
           <ion-item>
             <ion-label class="label">Routing Number:</ion-label>

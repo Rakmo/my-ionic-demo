@@ -1,0 +1,15 @@
+.item-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+.item-description {
+  color: gray;
+  font-size: 0.8rem;
+  margin-top: 4px; /* Add space between label and description */
+}
+
+ion-grid {
+  padding-top: 24px;
+}
