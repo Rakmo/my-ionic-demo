@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recipient-details-form',
@@ -8,7 +9,15 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class RecipientDetailsFormComponent implements OnInit {
   @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() {}
+  form: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      value: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {}
 
@@ -16,14 +25,14 @@ export class RecipientDetailsFormComponent implements OnInit {
   lastName?: string;
   type?: string;
   value?: string;
-  isEmail: boolean = false;
+  isEmail?: boolean = false;
 
   toggleChanged() {
     // Handle any additional logic if needed
     this.isEmail = !this.isEmail;
   }
 
-  submit() {
+  onSubmit() {
     // Handle the submit logic here
   }
 

@@ -29,4 +29,16 @@
     </ion-label>
     <ion-icon name="chevron-forward" slot="end"></ion-icon>
   </ion-item>
+
+  <div class="button-container">
+    <ion-button id="log-off">Log Off</ion-button>
+  </div>
+
+  <ion-toast
+    trigger="log-off"
+    message="Thanks, you have been logged off!"
+    [duration]="3000"
+    icon="checkmark-circle-outline"
+    style="margin-bottom: auto"
+  ></ion-toast>
 </ion-list>

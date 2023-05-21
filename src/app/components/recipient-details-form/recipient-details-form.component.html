@@ -1,52 +1,61 @@
-<h2>Recipient Details</h2>
-
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
     <ion-label position="floating" style="font-weight: bold"
       >First Name</ion-label
     >
-    <ion-input
-      [(ngModel)]="firstName"
-      name="firstName"
-      [ngModelOptions]="{ standalone: true }"
-    ></ion-input>
+    <ion-input formControlName="firstName"></ion-input>
   </ion-item>
+  <ion-note
+    class="custom-error"
+    *ngIf="
+      form.get('firstName')?.hasError('required') &&
+      form.get('firstName')?.touched
+    "
+  >
+    First Name is required.
+  </ion-note>
 
   <ion-item>
     <ion-label position="floating" style="font-weight: bold"
       >Last Name</ion-label
     >
-    <ion-input
-      [(ngModel)]="lastName"
-      name="lastName"
-      [ngModelOptions]="{ standalone: true }"
-    ></ion-input>
+    <ion-input formControlName="lastName"></ion-input>
   </ion-item>
+  <ion-note
+    class="custom-error"
+    *ngIf="
+      form.get('lastName')?.hasError('required') &&
+      form.get('lastName')?.touched
+    "
+  >
+    Last Name is required.
+  </ion-note>
 
   <ion-item style="font-weight: bold">
-    <ion-toggle
-      [(ngModel)]="isEmail"
-      (click)="toggleChanged()"
-      [ngModelOptions]="{ standalone: true }"
-      style="margin-top: 30px"
+    <ion-toggle [(ngModel)]="isEmail" (click)="toggleChanged()"
+      >Is it email?</ion-toggle
     >
-      Is it email?
-    </ion-toggle>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating" style="font-weight: bold">
-      {{ isEmail ? "Email" : "Phone" }}
-    </ion-label>
-    <ion-input
-      [(ngModel)]="value"
-      name="value"
-      [ngModelOptions]="{ standalone: true }"
-    ></ion-input>
+    <ion-label position="floating" style="font-weight: bold">{{
+      isEmail ? "Email" : "Phone"
+    }}</ion-label>
+    <ion-input formControlName="value"></ion-input>
   </ion-item>
+  <ion-note
+    class="custom-error"
+    *ngIf="
+      form.get('value')?.hasError('required') && form.get('value')?.touched
+    "
+  >
+    {{ isEmail ? "Email" : "Phone" }} is required.
+  </ion-note>
 
   <div class="ion-text-center ion-padding button-group bottom-button-group">
-    <ion-button expand="block" (click)="submit()">Submit</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="form.invalid"
+      >Add Recipient</ion-button
+    >
     <ion-button expand="block" (click)="onCancel()" class="cancel-button"
       >Cancel</ion-button
     >
