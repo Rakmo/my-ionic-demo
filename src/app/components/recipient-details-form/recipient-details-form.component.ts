@@ -34,6 +34,7 @@ export class RecipientDetailsFormComponent implements OnInit {
 
   onSubmit() {
     // Handle the submit logic here
+    this.onCancel();
   }
 
   onCancel() {
