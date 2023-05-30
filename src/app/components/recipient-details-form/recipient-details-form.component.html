@@ -1,56 +1,78 @@
+<ion-toolbar>
+  <ion-title>Enter Recipient Details</ion-title>
+</ion-toolbar>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <ion-item>
-    <ion-label position="floating" style="font-weight: bold"
-      >First Name</ion-label
-    >
-    <ion-input formControlName="firstName"></ion-input>
+    <ion-input
+      label="First Name"
+      labelPlacement="floating"
+      formControlName="firstName"
+    ></ion-input>
   </ion-item>
-  <ion-note
-    class="custom-error"
+  <app-form-field-error
     *ngIf="
       form.get('firstName')?.hasError('required') &&
       form.get('firstName')?.touched
     "
-  >
-    First Name is required.
-  </ion-note>
+    errorMessage=" First Name is required."
+  ></app-form-field-error>
+  <app-form-field-error
+    *ngIf="form.get('firstName')?.errors?.['pattern'] &&
+  form.get('firstName')?.touched"
+    errorMessage="First Name must contain only letters, numbers, spaces or apostrophe."
+  ></app-form-field-error>
 
   <ion-item>
-    <ion-label position="floating" style="font-weight: bold"
-      >Last Name</ion-label
-    >
-    <ion-input formControlName="lastName"></ion-input>
+    <ion-input
+      label="Last Name"
+      labelPlacement="floating"
+      formControlName="lastName"
+    ></ion-input>
   </ion-item>
-  <ion-note
-    class="custom-error"
+  <app-form-field-error
     *ngIf="
       form.get('lastName')?.hasError('required') &&
       form.get('lastName')?.touched
     "
-  >
-    Last Name is required.
-  </ion-note>
+    errorMessage="Last Name is required."
+  ></app-form-field-error>
+  <app-form-field-error
+    *ngIf="form.get('lastName')?.errors?.['pattern'] &&
+form.get('lastName')?.touched"
+    errorMessage="Last Name must contain only letters, numbers, spaces or apostrophe."
+  ></app-form-field-error>
 
   <ion-item style="font-weight: bold">
-    <ion-toggle [(ngModel)]="isEmail" (click)="toggleChanged()"
+    <ion-toggle formControlName="isEmail" (click)="toggleChanged()"
       >Is it email?</ion-toggle
     >
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating" style="font-weight: bold">{{
-      isEmail ? "Email" : "Phone"
-    }}</ion-label>
-    <ion-input formControlName="value"></ion-input>
+    <ion-input
+      [label]="form.get('isEmail')?.value ? 'Email' : 'Phone'"
+      labelPlacement="floating"
+      formControlName="value"
+    ></ion-input>
   </ion-item>
-  <ion-note
-    class="custom-error"
+
+  <app-form-field-error
     *ngIf="
       form.get('value')?.hasError('required') && form.get('value')?.touched
     "
-  >
-    {{ isEmail ? "Email" : "Phone" }} is required.
-  </ion-note>
+    errorMessage="{{
+      form.get('isEmail')?.value ? 'Email' : 'Phone'
+    }} is required."
+  ></app-form-field-error>
+  <app-form-field-error
+    *ngIf="form.get('value')?.errors?.['pattern'] &&
+form.get('value')?.touched"
+    errorMessage="{{
+      form.get('isEmail')?.value
+        ? 'Email should be in a valid format eg. john@test.com'
+        : 'Phone should be 10 digits and in a valid format eg. 1234567890'
+    }}"
+  ></app-form-field-error>
 
   <div class="ion-text-center ion-padding button-group bottom-button-group">
     <ion-button expand="block" type="submit" [disabled]="form.invalid"

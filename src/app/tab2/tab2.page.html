@@ -42,8 +42,10 @@
             color="primary"
           ></ion-icon>
           <ion-label>
-            <h2>{{ recipient.fullname }}</h2>
-            <p style="font-weight: bold">{{recipient.tokenValue}}</p>
+            <h2>{{ recipient.fullName }}</h2>
+            <p style="font-weight: bold">
+              {{formatPhoneRef(recipient.tokenValue)}}
+            </p>
           </ion-label>
         </ion-item>
       </ion-list>
@@ -64,5 +66,6 @@
 <ion-content [fullscreen]="true" *ngIf="showRecipientDetailsForm">
   <app-recipient-details-form
     (cancel)="onCancelForm()"
+    (submit)="onSubmitForm($event)"
   ></app-recipient-details-form>
 </ion-content>

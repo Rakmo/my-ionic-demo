@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { recipientsData } from '../dbModule';
+import { formatPhoneNumber } from '../utils/format-utils';
+import { Recipient } from '../interfaces/Recipient';
 
 @Component({
   selector: 'app-tab2',
@@ -6,14 +9,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-  recipientData = [
-    { id: 1, fullname: 'John Doe', tokenValue: '6245897202' },
-    { id: 2, fullname: 'Amy Powell', tokenValue: 'amy.pow@abc.com' },
-    { id: 3, fullname: 'Sundar Pichai', tokenValue: 'raj.m@test.com' },
-    { id: 4, fullname: 'ABC Corporation', tokenValue: '6245897202' },
-    { id: 5, fullname: 'Hair Salon', tokenValue: '9512587532' },
-    { id: 6, fullname: 'Generative AI', tokenValue: 'chatgpt@oai.com' },
-  ];
+  recipientData = recipientsData;
+  recipientToBeAdded?: any;
 
   showRecipientDetailsForm: boolean = false;
 
@@ -25,5 +22,17 @@ export class Tab2Page {
 
   onCancelForm() {
     this.showRecipientDetailsForm = false;
+  }
+
+  onSubmitForm(recipient: Recipient) {
+    this.recipientToBeAdded = recipient;
+
+    this.recipientData.unshift(this.recipientToBeAdded);
+
+    this.showRecipientDetailsForm = false;
+  }
+
+  formatPhoneRef(text?: string): string {
+    return formatPhoneNumber(text);
   }
 }

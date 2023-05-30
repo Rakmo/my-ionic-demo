@@ -7,6 +7,9 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { AccountCardComponent } from '../components/account-card/account-card.component';
+import { GreetingComponent } from '../components/greeting/greeting.component';
+
+import { accountsData } from '../../../src/db.json';
 
 @NgModule({
   imports: [
@@ -16,6 +19,6 @@ import { AccountCardComponent } from '../components/account-card/account-card.co
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
   ],
-  declarations: [Tab1Page, AccountCardComponent],
+  declarations: [Tab1Page, AccountCardComponent, GreetingComponent],
 })
 export class Tab1PageModule {}

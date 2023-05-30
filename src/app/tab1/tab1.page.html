@@ -1,44 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Account(s) </ion-title>
+    <ion-title> Accounts Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="!showAccountDetails">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Account(s)</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <app-greeting></app-greeting>
+  <div
+    style="flex: 1; background-color: var(--ion-color-primary); height: 100vh"
+  >
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">Account(s)</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-  <app-account-card
-    (click)="openAccountDetails('Checking *8132', '$4,231.00')"
-    balance="$4,231.00"
-    accountName="Checking *8132"
-    id="open-loading"
-  ></app-account-card>
-  <app-account-card
-    (click)="openAccountDetails('Savings *7984', '$45,234.00')"
-    balance="$45,234.00"
-    accountName="Savings *7984"
-    id="open-loading-2"
-  ></app-account-card>
+    <ion-list style="background-color: var(--ion-color-primary)">
+      <app-account-card
+        *ngFor="let account of accountsData"
+        (click)="openAccountDetails( account?.accountType=='Certificate of Deposit'? 'CD '+account?.maskedAccountNumber : account?.accountType+' '+account?.maskedAccountNumber, '$'+account?.accountBalance)"
+        balance="{{'$'
+        +account?.accountBalance}}"
+        accountName="{{ account?.accountType+' '+account?.maskedAccountNumber}}"
+        id="open-loading"
+      ></app-account-card>
+    </ion-list>
 
-  <ion-loading
-    class="custom-loading"
-    trigger="open-loading"
-    message="Loading..."
-    [duration]="2000"
-    spinner="crescent"
-  ></ion-loading>
+    <ion-loading
+      class="custom-loading"
+      trigger="open-loading"
+      message="Loading..."
+      [duration]="2000"
+      spinner="crescent"
+    ></ion-loading>
 
-  <ion-loading
-    class="custom-loading"
-    trigger="open-loading-2"
-    message="Loading..."
-    [duration]="2000"
-    spinner="crescent"
-  ></ion-loading>
+    <ion-loading
+      class="custom-loading"
+      trigger="open-loading-2"
+      message="Loading..."
+      [duration]="2000"
+      spinner="crescent"
+    ></ion-loading>
+  </div>
 </ion-content>
 
 <ion-content [fullscreen]="true" *ngIf="showAccountDetails">
@@ -103,9 +106,14 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <ion-footer>
+    <ion-text color="Primary">
+      <p class="custom-heading">Member FDIC | Equal Housing Lender</p>
+    </ion-text>
+  </ion-footer>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="!showAccountDetails">
   <ion-text color="Primary">
     <p class="custom-heading">Member FDIC | Equal Housing Lender</p>
   </ion-text>

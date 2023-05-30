@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { RecipientDetailsFormComponent } from '../components/recipient-details-form/recipient-details-form.component';
+import { FormFieldErrorComponent } from '../components/form-field-error/form-field-error.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,10 @@ import { RecipientDetailsFormComponent } from '../components/recipient-details-f
     Tab2PageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [Tab2Page, RecipientDetailsFormComponent],
+  declarations: [
+    Tab2Page,
+    RecipientDetailsFormComponent,
+    FormFieldErrorComponent,
+  ],
 })
 export class Tab2PageModule {}

@@ -1,0 +1,82 @@
+{
+  "accountsData": [
+    {
+      "accountId": 111,
+      "accountType": "Checking",
+      "accountNumber": "878753125",
+      "maskedAccountNumber": "*3125",
+      "routingNumber": "0123456789",
+      "hideAccount": false,
+      "accountBalance": "4,231.56"
+    },
+    {
+      "accountId": 222,
+      "accountType": "Savings",
+      "accountNumber": "787836128",
+      "maskedAccountNumber": "*6128",
+      "routingNumber": "0123456789",
+      "hideAccount": false,
+      "accountBalance": "35,231.43"
+    },
+    {
+      "accountId": 333,
+      "accountType": "Certificate of Deposit",
+      "accountNumber": "87459874",
+      "maskedAccountNumber": "*9874",
+      "routingNumber": "0123456789",
+      "hideAccount": false,
+      "accountBalance": "5277.90"
+    }
+  ],
+  "recipientsData": [
+    {
+      "id": 1,
+      "fullName": "John Doe",
+      "firstName": "John",
+      "lastName": "Doe",
+      "tokenValue": "6245897202",
+      "recipientType": "I"
+    },
+    {
+      "id": 2,
+      "fullName": "Amy Powell",
+      "firstName": "Amy",
+      "lastName": "Powel",
+      "tokenValue": "amy.pow@abc.com",
+      "recipientType": "I"
+    },
+    {
+      "id": 3,
+      "fullName": "Sundar Pichai",
+      "firstName": "Sundar",
+      "lastName": "Pichai",
+      "tokenValue": "sundar.ceo@test.com",
+      "recipientType": "I"
+    },
+    {
+      "id": 4,
+      "fullName": "ABC Corporation",
+      "firstName": "",
+      "lastName": "ABC Corporation",
+      "tokenValue": "6245897202",
+      "recipientType": "B"
+    },
+    {
+      "id": 5,
+      "fullName": "Hair Salon",
+      "firstName": "",
+      "lastName": "Hair Salon",
+      "tokenValue": "9512587532",
+      "recipientType": "B"
+    },
+    {
+      "id": 6,
+      "fullName": "Generative AI",
+      "firstName": "",
+      "lastName": "Generative AI",
+      "tokenValue": "chatgpt@oai.com",
+      "recipientType": "B"
+    }
+  ],
+  "settings": {}
+}

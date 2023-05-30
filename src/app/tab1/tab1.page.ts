@@ -7,6 +7,8 @@ import {
   transition,
 } from '@angular/animations';
 
+import { accountsData } from '../dbModule';
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -73,6 +75,7 @@ export class Tab1Page {
       amount: '$18.93',
     },
   ];
+  accountsData = accountsData;
 
   constructor() {
     this.showAccountDetails = false;
