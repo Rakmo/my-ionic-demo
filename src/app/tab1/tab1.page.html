@@ -76,7 +76,9 @@
       </div>
     </ion-card>
 
-    <ion-card-content>
+    <ion-card-content
+      *ngIf="selectedAccount?.accountType!='Certificate of Deposit'"
+    >
       <ion-list>
         <ion-item
           *ngFor="let transaction of transactionData"

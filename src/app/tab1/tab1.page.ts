@@ -106,7 +106,6 @@ export class Tab1Page {
     setTimeout(() => {
       this.showLoader = false;
       this.showAccountDetails = true;
-      console.log(this.showLoader);
     }, 2000);
   }
 
