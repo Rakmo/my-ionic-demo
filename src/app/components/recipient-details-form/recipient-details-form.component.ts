@@ -53,7 +53,6 @@ export class RecipientDetailsFormComponent implements OnInit {
 
   onSubmit() {
     // Handle the submit logic here
-
     this.recipientToBeAdded = {
       id: Math.floor(Math.random() * 10000) + 1,
       fullName: this.form.value.firstName + ' ' + this.form.value.lastName,
@@ -62,7 +61,6 @@ export class RecipientDetailsFormComponent implements OnInit {
       tokenValue: this.form.value.value,
       recipientType: 'I',
     };
-    // console.log(this.recipientToBeAdded);
     this.submit.emit(this.recipientToBeAdded);
   }
 
