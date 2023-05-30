@@ -22,25 +22,8 @@
         balance="{{'$'
         +account?.accountBalance}}"
         accountName="{{ account?.accountType+' '+account?.maskedAccountNumber}}"
-        id="open-loading"
       ></app-account-card>
     </ion-list>
-
-    <ion-loading
-      class="custom-loading"
-      trigger="open-loading"
-      message="Loading..."
-      [duration]="2000"
-      spinner="crescent"
-    ></ion-loading>
-
-    <ion-loading
-      class="custom-loading"
-      trigger="open-loading-2"
-      message="Loading..."
-      [duration]="2000"
-      spinner="crescent"
-    ></ion-loading>
   </div>
 </ion-content>
 

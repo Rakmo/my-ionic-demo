@@ -49,8 +49,10 @@ ion-card-content {
 }
 
 ion-loading.custom-loading {
-  --background: #e3edff;
-  --spinner-color: #1c6dff;
+  .loading-wrapper {
+    --background: #e3edff;
+    --spinner-color: var(--ion-color-primary);
 
-  color: #1c6dff;
+    color: var(--ion-color-primary);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingController } from '@ionic/angular';
 import {
   trigger,
   state,
@@ -77,7 +78,7 @@ export class Tab1Page {
   ];
   accountsData = accountsData;
 
-  constructor() {
+  constructor(private loadingCtrl: LoadingController) {
     this.showAccountDetails = false;
   }
 
@@ -96,10 +97,22 @@ export class Tab1Page {
     this.accountName = accountName;
     this.balance = balance;
     console.log(this.showLoader);
+    this.showLoading();
     setTimeout(() => {
       this.showLoader = false;
       this.showAccountDetails = true;
       console.log(this.showLoader);
     }, 2000);
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      spinner: 'crescent',
+      message: 'Loading...',
+      duration: 2000,
+      cssClass: 'custom-loading',
+    });
+
+    loading.present();
   }
 }
