@@ -10,7 +10,7 @@ import { Recipient } from '../interfaces/Recipient';
 })
 export class Tab2Page {
   recipientData = recipientsData;
-  recipientToBeAdded?: any;
+  recipientToBeAdded?: Recipient;
 
   showRecipientDetailsForm: boolean = false;
 

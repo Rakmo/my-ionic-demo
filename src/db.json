@@ -5,7 +5,7 @@
       "accountType": "Checking",
       "accountNumber": "878753125",
       "maskedAccountNumber": "*3125",
-      "routingNumber": "0123456789",
+      "routingNumber": "11110011",
       "hideAccount": false,
       "accountBalance": "4,231.56"
     },
@@ -14,7 +14,7 @@
       "accountType": "Savings",
       "accountNumber": "787836128",
       "maskedAccountNumber": "*6128",
-      "routingNumber": "0123456789",
+      "routingNumber": "11110011",
       "hideAccount": false,
       "accountBalance": "35,231.43"
     },
@@ -23,7 +23,7 @@
       "accountType": "Certificate of Deposit",
       "accountNumber": "87459874",
       "maskedAccountNumber": "*9874",
-      "routingNumber": "0123456789",
+      "routingNumber": "11100113",
       "hideAccount": false,
       "accountBalance": "5277.90"
     }

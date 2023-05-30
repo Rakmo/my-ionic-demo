@@ -9,6 +9,7 @@ import {
 } from '@angular/animations';
 
 import { accountsData } from '../dbModule';
+import { Account } from '../interfaces/Account';
 
 @Component({
   selector: 'app-tab1',
@@ -36,7 +37,9 @@ import { accountsData } from '../dbModule';
 export class Tab1Page {
   showAccountDetails: boolean = false;
   showLoader: boolean = false;
+  selectedAccount?: Account;
   accountName?: string;
+  accountNumber?: string;
   balance?: string;
   transactionData = [
     {
@@ -76,7 +79,7 @@ export class Tab1Page {
       amount: '$18.93',
     },
   ];
-  accountsData = accountsData;
+  accountsData?: Account[] = accountsData;
 
   constructor(private loadingCtrl: LoadingController) {
     this.showAccountDetails = false;
@@ -92,11 +95,13 @@ export class Tab1Page {
     this.detailsShown = !this.detailsShown;
   }
 
-  openAccountDetails(accountName: string, balance: string) {
+  openAccountDetails(account: Account) {
+    this.selectedAccount = account;
     this.showLoader = true;
-    this.accountName = accountName;
-    this.balance = balance;
-    console.log(this.showLoader);
+    this.accountName =
+      account?.accountType == 'Certificate of Deposit'
+        ? 'CD ' + account?.maskedAccountNumber
+        : account?.accountType + ' ' + account?.maskedAccountNumber;
     this.showLoading();
     setTimeout(() => {
       this.showLoader = false;
