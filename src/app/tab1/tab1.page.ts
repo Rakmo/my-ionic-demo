@@ -21,7 +21,6 @@ import { Account } from '../interfaces/Account';
         'collapsed',
         style({
           height: '0',
-          overflow: 'hidden',
         })
       ),
       state(
